@@ -537,18 +537,679 @@
 //     cout << oil <<"갤런당" << result << "마일";
 //     return 0;
 // }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     cout << "휘발유 소비량(100킬로미터당 리터 수): ";
+//     double l;
+//     cin >> l;
+//     double oil;
+//     oil = l/3.875;
+//     int result;
+//     result = 62.14/oil;
+//     cout << result << endl;
+//     cout << result << "mpg(miles per gallon)" << endl << l << "liters/100km" << endl;
+//     return 0;
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int yams[3];
+//     yams[0] = 7;
+//     yams[1] = 8;
+//     yams[2] = 6;
+//     int yamcosts[3] = {200,300,50};
+//     cout << "고구마 합 = ";
+//     cout << yams[0] + yams[1] + yams[2] << endl;
+//     cout << yams[1] << "개가 들어있는 포장은 ";
+//     cout << "개당" << yamcosts[1] << "원\n";
+//     int total = yams[0] * yamcosts[0] + yams[1] * yamcosts[1];
+//     total = total + yams[2] * yamcosts[2];
+//     cout << "세 포장의 총 가격" << total << "원 \n";
+//     cout << "\nyams 배열의 크기" << sizeof yams;
+//     cout << "바이트\n";
+//     cout << "원소 하나의 크기 " << sizeof yams[0];
+//     cout << "바이트\n";
+//     return 0;
+// }
+// #include <iostream>
+// #include <cstring> //strlen 함수용
+// int main()
+// {
+//     using namespace std;
+//     const int Size = 15;
+//     char name1[Size];
+//     char name2[Size] = "C++owboy";
+//     cout << "안녕하세요 저는" << name2;
+//     cout << "입니다. 실례지만 성함이?\n" ;
+//     cin >> name1;
+//     cout << "아, " << name1 << "씨 당신의 이름은 ";
+//     cout << strlen(name1) << "자입니다만\n";
+//     cout << sizeof(name1) << "바이트 크기의 배열에 저장\n";
+//     cout << "이름이" << name1[0] << "자로 시작하는군요 \n";
+//     name2[3] = '\0';
+//     cout << "제 이름의 처음 세 문자는 다음과 같습니다: ";
+//     cout << name2 << endl;
+//     return 0;
+// }
+//sizeof 배열 전체 크기 strlen 배열에 저장된 문자열의 크기 리턴 널문자 포함x
+//문자열 입력 결함 예제
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     const int ArSize = 20;
+//     char name[ArSize];
+//     char dessert[ArSize];
+//     cout << "이름:\n";
+//     cin >> name;
+//     cout << "좋아하는 디저트 입력:\n";
+//     cin >> dessert;
+//     cout << "맛있는 " << dessert;
+//     cout << "디저트를 준비하겠습니다." << name << "님\n";
+//     return 0;
+// } 
+//
+// cin에게 문자열 끝을 알려 주는 다른 수단 필요
+//getline() 함수 키보드 엔터키를 개행으로 인식해서 문자열 다 읽는다
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     const int ArSize = 20;
+//     char name[ArSize];
+//     char dessert[ArSize];
+//     cout << "이름 입력:\n";
+//     cin.getline(name,ArSize); //개행문자있는곳까지 읽는다
+//     cout << "좋아하는 디저트:\n";
+//     cin.getline(dessert,ArSize);
+//     cout << "맛있는" << dessert;
+//     cout << " 디저트를 준비하겠습니다." << name << "님\n";
+//     return 0;
+// }//getlin은 개행문자 읽어 널문자로 대체
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     const int ArSize = 20;
+//     char name[ArSize];
+//     char dessert[ArSize];
+//     cout << "이름 입력:\n";
+//     cin.get(name,ArSize).get();
+//     cout << "좋아하는 디저트:\n";
+//     cin.get(dessert,ArSize).get();
+//     cout << "맛있는" << dessert;
+//     cout << " 디저트를 준비하겠습니다." << name << "님\n";
+//     return 0;
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     cout << "지금 사는 아파트 언제 입주했나요\n";
+//     int year;
+//     cin >> year;
+//     cin.get(); //개행문자 버리기용
+//     cout << "살고있는 도시 어디인가요\n";
+//     char address[80];
+//     cin.getline(address,80);
+//     cout << "입주년도: " << year << endl;
+//     cout << "도시: " << address << endl;
+//     cout << "등록 완료\n";
+//     return 0;
+// }//엔터가 만들어낸 개행 문자 입력 큐에 남겨져있어서 문제다
+
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     string s1 = "penguin";
+//     string s2,s3;
+//     cout << "string 객체를 string 객체에 대입할 수 있다: s2=s1\n";
+//     s2=s1;
+//     cout << "s1: " << s1 << ", s2: " << s2 << endl;
+//     cout <<"string 객체에 c 스타일 문자열 대입가능\n";
+//     cout <<"s2 =\"buzzard\"\n";
+//     s2 = "buzzard";
+//     cout << "s2: " << s2 << endl;
+//     cout << "String 객체들 결합 가능: s3 = s1+s2\n";
+//     s3 = s1+s2;
+//     cout << "s3: " << s3 << endl;
+//     cout << "string 객체 추가 가능\n";
+//     s1 += s2;
+//     cout << "s1 += s2 --> s1 = " << s1 << endl;
+//     s2 += "for a day";
+//     cout << "s2 += \" for a day\" --> s2 = " << s2 << endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// struct inflatable
+// {
+//     char name[20];
+//     float volume;
+//     double price;
+// };
+// int main()
+// {
+//     using namespace std;
+//     inflatable guest =
+//     {
+//         "Glorious Gloria",
+//         1.88,
+//         29.99
+//     };
+//     inflatable pal =
+//     {
+//         "Audacious Arthur",
+//         3.12,
+//         32.99
+//     };
+//     cout << "지금 판매하는 모형풍선은\n" << guest.name;
+//     cout << "와" << pal.name << "입니다\n";
+//     cout << "두 제품을 $";
+//     cout << guest.price + pal.price << "에 드리겠습니다\n";
+//     return 0;
+// }
+
+// #include <iostream>
+// struct inflatable
+// {
+//     char name[20];
+//     float volume;
+//     double price;
+// };
+// int main()
+// {
+//     using namespace std;
+//     inflatable guests[2]=
+//     {
+//         {"Bambi",0.5,21.99},
+//         {"Godzilla", 2000,565.99}
+//     };
+//     cout << guests[0].name << "와" << guests[1].name
+//          <<"의 부피를 합하면\n"
+//          << guests[0].volume + guests[1].volume
+//          <<" 세제곱피트\n";
+//     return 0;
+// }
+//4장
+//1.
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     cout << "영문 퍼스트 네임(이름): ";
+//     char name[20];
+//     cin.getline(name,20);
+//     cout << "영문 라스트 네임(성): ";
+//     char l_name[20];
+//     cin.getline(l_name,20);
+//     cout << "학생이 원하는 학점: ";
+//     char score;
+//     cin >> score;
+//     cout << "나이: ";
+//     int age;
+//     cin >> age;
+//     cout << "성명: " << l_name << ", " << name << endl;
+//     cout << "학점: " << char(score+1) << endl;
+//     cout << "나이: " << age << endl;
+//     return 0;
+// }
+// #include <iostream>
+// #include <string>
+// int main()
+// {
+//     using namespace std;
+//     cout << "영문 퍼스트 네임(이름): ";
+//     string f_name;
+//     getline(cin,f_name);
+//     cout <<"영문 라스트 네임(성): ";
+//     string l_name;
+//     getline(cin,l_name);
+//     cout << "원하는 학점: ";
+//     char score;
+//     cin >> score;
+//     cout << "나이: ";
+//     int age;
+//     cin >> age;
+//     cin.get();
+//     cout << "성명: " << l_name << ", " <<  f_name << endl;
+//     cout << "학점: " << char(score+1) << endl;
+//     cout << "나이: " << age << endl;
+//     return 0;
+// }
+// #include <iostream>
+// #include <string>
+// int main()
+// {
+//     using namespace std;
+//     cout << "퍼스트 네임(이름)을 입력하시오: ";
+//     string f_name;
+//     getline(cin,f_name);
+//     cout << "라스트 네임(성)을 입력하시요: ";
+//     string l_name;
+//     getline(cin,l_name);
+//     string name = l_name + ", " + f_name;
+//     cout << "하나의 문자열로 만들면: " << name << endl;
+//     return 0;
+// }
+// #include <iostream>
+// struct candybar{
+//     char name[20];
+//     double weight;
+//     int kcal;
+// };
+// int main()
+// {
+//     using namespace std;
+//     candybar snack = 
+//     {
+//         "Mocha Munch",
+//         2.3,
+//         350
+//     };
+//     cout << snack.name << endl;
+//     cout << snack.weight << endl;
+//     cout << snack.kcal << endl;
+//     return 0;
+// }
+// #include <iostream>
+// struct candybar{
+//     char name[20];
+//     double weight;
+//     int kcal;
+// };
+// int main()
+// {
+//     using namespace std;
+//     candybar snack [3]=
+//     {
+//         {"babamba",2.2,130},
+//         {"merona", 1.5, 75},
+//         {"bibibig",2.5,320}
+//     };
+//     cout << snack[0].name << " " <<  snack[0].weight << " " << snack[0].kcal << endl;
+//     cout << snack[1].name << " " <<  snack[1].weight << " " << snack[1].kcal << endl;
+//     cout << snack[2].name << " " <<  snack[2].weight << " " << snack[2].kcal << endl;
+//     return 0;
+// }
+// #include <iostream>
+// #include <string>
+// struct pizza{
+//     char name[20];
+//     double pie;
+//     double weight;
+// };
+// int main()
+// {
+//     using namespace std;
+//     pizza domino;
+//     cout<< "피자 회사 이름입력: ";
+//     cin.get(domino.name,20).get();
+//     cout << "피자 지름 입력: ";
+//     cin >> domino.pie;
+//     cout <<"피자의 중량 입력: ";
+//     cin >> domino.weight;
+//     cout << domino.name << " " << domino.pie << " " << domino.weight << endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+// struct pizza{
+//     double pie;
+//     char name[20];
+//     double weight;
+// };
+// int main()
+// {
+//     using namespace std;
+//     pizza *pw = new pizza;
+//     cout << "피자 지름을 입력: ";
+//     cin >> pizza.pie;
+
+//     return 0;
+// }
+// #include <iostream>
+// #include <array>
+// int main()
+// {
+//     using namespace std;
+//     array<int,3> result;
+//     cout << "첫번째 결과: ";
+//     cin >> result[0];
+//     cout << "두번째 결과: ";
+//     cin >> result[1];
+//     cout << "세번째 결과: ";
+//     cin >> result[2];
+//     cout << "40야드 3번 뛴 결과의 평균: " << (result[0]+result[1]+result[2])/3 << endl;
+//     return 0;
+// }
+// #include <iostream>
+// const int ArSize = 16;
+// int main()
+// {
+//     long long factorial[ArSize];
+//     factorial[1]= factorial[0]=1LL;
+//     for (int i = 2; i < ArSize; i++)
+//     {
+//         factorial[i] = i*factorial[i-1];
+//     }
+//     for (int i = 0; i < ArSize; i++)
+//     {
+//         std::cout << i << "! = " << factorial[i] << std::endl;
+//     }
+//     return 0;
+    
+// }
+// #include <iostream>
+// #include <string>
+// int main()
+// {
+//     using namespace std;
+//     cout << "동물 입력: ";
+//     string word;
+//     cin >> word;
+//     for (int i = word.size()-1; i >=0; i--)
+//     {
+//         cout << word[i];
+//     }
+//     cout << "\n종료\n" << endl;
+//     return 0;
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     cout << "값 5개의 합계와 평균을 구합니다.\n";
+//     cout << "값 5개를 입력하세요.\n";
+//     double number;
+//     double sum = 0.0;
+//     for (int i = 1; i <= 5; i++)
+//     {
+//         cout << "값 " << i << ": ";
+//         cin >> number;
+//         sum += number;
+//     }
+//     cout << "값 5개 입력완료 \n";
+//     cout << "입력받은 값 5개의 합: " << sum << "입니다 \n";
+//     cout << "입력받은 값 5개의 평균: " << sum/5 << "입니다. \n";
+//     cout << "감사합니다.\n";
+//     return 0;   
+// }
+// #include <iostream>
+// #include <string>
+// int main()
+// {
+//     using namespace std;
+//     cout << "단어 하나 입력: ";
+//     string word;
+//     cin >> word;
+//     char temp;
+//     int i,j;
+//     for (j = 0, i= word.size()-1; j < i; --i, ++j)
+//     {
+//         temp = word[i];
+//         word[i] = word[j];
+//         word[j] = temp;
+//     }
+//     cout << word << "\n종료\n";
+//     return 0;
+    
+// }
+
 #include <iostream>
+#include <cstring>
 int main()
 {
     using namespace std;
-    cout << "휘발유 소비량(100킬로미터당 리터 수): ";
-    double l;
-    cin >> l;
-    double oil;
-    oil = l/3.875;
-    int result;
-    result = 62.14/oil;
-    cout << result << endl;
-    cout << result << "mpg(miles per gallon)" << endl << l << "liters/100km" << endl;
+    char word[5] = "?ate";
+
+    for (char ch = 'a'; strcmp(word,"mate") ; ch++)
+    {
+        cout << word << endl;
+        word[0] = ch;
+    }
+    cout << "루프가 끝난 후에 단어는 " << word <<"입니다.\n";
     return 0;
 }
+
+// #include <iostream>
+// #include <string>
+// int main()
+// {
+//     using namespace std;
+//     string word = "?ate";
+//     for (char ch = 'a'; word != "mate"; ch++)
+//     {
+//         cout << word << endl;
+//         word[0] = ch;
+//     }
+//     cout << "루프가 끝난 후에 단어는 " << word << "입니다.\n";
+//     return 0;
+// }
+// #include <iostream>
+// const int ArSize = 20;
+// int main()
+// {
+//     using namespace std;
+//     char name[ArSize];
+//     cout << "영문 이름을 입력: ";
+//     cin >> name;
+//     cout << "귀하의 영문 이름을 한줄에 한 자씩\n";
+//     cout << "ASCII 코드와 함께 표시하면 이렇습니다. \n";
+//     int i = 0;
+//     while (name[i] != '\0') // 널문자 만나면 탈출
+//     {
+//         cout << name[i] << ": " << int(name[i]) << endl;
+//         i++;
+//     }
+//     return 0;
+// }
+// #include <iostream>
+// #include <ctime>
+// int main()
+// {
+//     using namespace std;
+//     cout << "지연 시간을 초 단위로 입력: ";
+//     float secs;
+//     cin >> secs;
+//     clock_t delay = secs * CLOCKS_PER_SEC;
+//     cout << "카운트 시작\a\b";
+//     clock_t start = clock();
+//     while (clock() - start <delay)
+//         ;
+//     cout << "종료 \a\n";
+//     return 0;
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int n;
+//     cout << "1부터 10까지의 수 중에서 ";
+//     cout << "내가 좋아하는 수를 한 번 맞춰보세요\n";
+//     do
+//     {
+//         cin >> n;
+//     } while (n !=7);
+//     cout << "맞았습니다 제가 좋아하는 수는 7입니다.\n";
+//     return 0;
+    
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     char ch;
+//     int count = 0;
+//     cout << "문자들을 입력;끝내려면#을 입력하세요: \n";
+//     while(ch != '#')
+//     {
+//         cout << ch;
+//         ++count;
+//         cin >> ch;
+//     }
+//     cout << endl << count << "문자를 읽었습니다. \n";
+//     return 0;
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     char ch;
+//     int count = 0;
+//     cout << "문자들을 입력 끝내려면 #을 입력:\n";
+//     cin.get(ch);
+//     while (ch !='#')
+//     {
+//         cout << ch;
+//         ++count;
+//         cin.get(ch);
+//     }
+//     cout << endl << count << " 문자를 읽었습니다. \n";
+//     return 0;
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     char ch;
+//     int count = 0;
+//     cin.get(ch);
+//     while(cin.fail() == false) // !cin.fail() 입력 실패안하면 실행
+//     {
+//         cout << ch;
+//         ++count;
+//         cin.get(ch);
+//     }
+//     cout << count << " 문자를 읽었습니다. \n";
+//     return 0;
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     char ch;
+//     int count = 0;
+//     cin.get(ch);
+//     while(cin) // 입력성공시 실행
+//     {
+//         cout << ch;
+//         ++count;
+//         cin.get(ch);
+//     }
+//     cout << count << " 문자를 읽었습니다. \n";
+//     return 0;
+// }
+// #include <iostream>
+// int main(void)
+// {
+//     using namespace std;
+//     int ch;
+//     int count = 0;
+//     while ((ch = cin.get()) !=EOF)
+//     {
+//         cout.put(char(ch));
+//         ++count;
+//     }
+//     cout << count << " 문자를 읽었습니다. \n";
+//     return 0;
+// }
+
+// #include <iostream>
+// const int Cities = 5;
+// const int Years = 4;
+// int main()
+// {
+//     using namespace std;
+//     const char * cities[Cities]=
+//     {
+//         "Seoul",
+//         "Jeju",
+//         "Busan",
+//         "Gangneung",
+//         "Daegu"
+//     };
+//     int maxtemps[Years][Cities]=
+//     {
+//         {35, 32, 33, 36, 35},
+//         {33, 32, 34, 35, 31},
+//         {33, 34, 32, 35, 34},
+//         {36, 35, 34, 37, 35},
+//     };
+//     cout << "2009년부터 2012년까지의 연중 최고 온도\n\n";
+//     for (int city = 0; city < Cities; ++city)
+//     {
+//         cout << cities[city] << ":\t";
+//         for (int year = 0; year < Years; ++year)
+//         {
+//             cout << maxtemps[year][city] << "\t";
+//         }
+//         cout << endl;
+//     }
+//     return 0;
+// }
+//5장 문제
+//1.
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     cout << "두 개의 정수 입력: ";
+//     int num1,num2;
+//     cin >> num1;
+//     cin >> num2;
+//     int result = 0;
+//     while(num1<=num2)
+//     {
+//         result += num1;
+//         num1++;
+//     }
+//     cout << "합: " << result << endl;
+//     return 0;
+// }
+//2
+// #include <iostream>
+// const long double array = 101;
+// int main()
+// {
+//     long double factorial[101];
+//     factorial[1]= factorial[0]=1LL;
+//     for (int i = 2; i < array; i++)
+//     {
+//         factorial[i] = i*factorial[i-1];
+//     }
+//     for (int i = 0; i < array; i++)
+//     {
+//         std::cout << i << "! = " << factorial[i] << std::endl;
+//     }
+//     return 0;
+// }
+//3.
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     cout << "수를 입력: ";
+//     int press;
+//     int count = 0;
+//     cin >> press;
+//     while(press !=0)
+//     {
+//         cout << press << endl;
+//         ++count;
+//         cin >> press;
+//     }
+//     cout << "입력한 문자수: " << count << endl;
+//     return 0;
+// }
+//4.
+// #include <iostream>
+// int main()
+// {
+
+// }
