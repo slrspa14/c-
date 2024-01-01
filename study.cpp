@@ -961,21 +961,21 @@
     
 // }
 
-#include <iostream>
-#include <cstring>
-int main()
-{
-    using namespace std;
-    char word[5] = "?ate";
+// #include <iostream>
+// #include <cstring>
+// int main()
+// {
+//     using namespace std;
+//     char word[5] = "?ate";
 
-    for (char ch = 'a'; strcmp(word,"mate") ; ch++)
-    {
-        cout << word << endl;
-        word[0] = ch;
-    }
-    cout << "루프가 끝난 후에 단어는 " << word <<"입니다.\n";
-    return 0;
-}
+//     for (char ch = 'a'; strcmp(word,"mate") ; ch++)
+//     {
+//         cout << word << endl;
+//         word[0] = ch;
+//     }
+//     cout << "루프가 끝난 후에 단어는 " << word <<"입니다.\n";
+//     return 0;
+// }
 
 // #include <iostream>
 // #include <string>
@@ -1213,3 +1213,759 @@ int main()
 // {
 
 // }
+//승률 구하기
+// #include <iostream>
+// long double probability(unsigned numbers, unsigned picks);
+// int main()
+// {
+//     using namespace std;
+//     double total, choices;
+//     cout << "전체 수의 개수와 뽑을 수의 개수 입력:\n";
+//     while((cin>>total >> choices) && choices <=total)
+//     {
+//         cout << "당신이 이길 확률은 ";
+//         cout << probability(total, choices);
+//         cout << "번 중에서 한 번입니다.\n";
+//         cout << "다시 두 수를 입력하십시오. (끝내려면 q를 입력): ";
+//     }
+//     cout << "프로그램 종료 \n";
+//     return 0;
+// }
+// long double probability(unsigned numbers, unsigned picks)
+// {
+//     long double result = 1.0;
+//     long double n;
+//     unsigned p;
+//     for(n = numbers,p=picks ; p >0 ; n--,p--)
+//         result = result *n/p;
+//     return result;
+// }
+//배열 매개변수를 사용하는 함수
+// #include <iostream>
+// const int ArSize = 8;
+// int sum_arr(int arr[], int n);
+// int main()
+// {
+//     using namespace std;
+//     int cookies[ArSize] = {1,2,4,8,16,32,64,128};
+//     int sum = sum_arr(cookies, ArSize); // 배열 이름 크기 전달 *arr 과 같다 배열의 이름은 첫 번째 원소의 주소값
+//     cout << "먹은 과자 수 합계: " << sum << "\n";
+//     return 0;
+// }
+// int sum_arr(int arr[], int n)
+// {
+//     int total = 0;
+//     for (int i = 0; i < n; i++)
+//     {
+//         total = total + arr[i];
+//     }
+//     return total;
+// }
+// #include <iostream>
+// const int ArSize = 8; // 상수 배열 8크기 지정
+// int sum_arr(int arr[], int n); // 함수
+// int main()
+// {
+//     int cookies[ArSize] = {1,2,4,8,16,32,64,128}; 
+//     std::cout << cookies << " = 배열주소, "; // 배열이름은 배열 첫번째 원소 주소값
+//     std::cout <<"sizeof cookies = " <<sizeof cookies << std::endl; // 배열 전체의 크기
+//     int sum = sum_arr(cookies, ArSize);
+//     std::cout <<"먹은 과자 수 합계: " << sum << std::endl;
+//     sum = sum_arr(cookies,3);
+//     std::cout << "처음 세 사람은 과자 " << sum << "개를 먹었습니다. \n";
+//     sum = sum_arr(cookies + 4, 4); //&cookies[4]로도 가능
+//     std::cout << "마지막 네 사람은 과자 " << sum << "개를 먹었습니다. \n";
+//     return 0;
+// }
+// int sum_arr(int arr[], int n)
+// {
+//     int total = 0;
+//     std::cout << arr <<" = arr, ";
+//     std::cout << "sizeof arr = " << sizeof arr << std::endl; // 포인터 변수의 크기기
+//     for (int i = 0; i < n; i++)
+//     {
+//         total = total +arr[i];
+//     }
+//     return total;
+// }
+//부동산예제
+// #include <iostream>
+// const int Max = 5;
+// int fill_array(double ar[], int limit);
+// void show_array(const double ar[], int n);
+// void revalue(double r, double ar[], int n);
+// int main()
+// {
+//     using namespace std;
+//     double properties[Max];
+
+//     int size = fill_array(properties,Max);
+//     show_array(properties, size);
+//     if(size > 0)
+//     {
+//         cout << "재평가율을 입력: ";
+//         double factor;
+//         while(!(cin >> factor))
+//         {
+//             cin.clear();
+//             while(cin.get() != '\n')
+//                 continue;
+//             cout <<"잘못 입력 수치입력: ";
+//         }
+//         revalue(factor, properties, size);
+//         show_array(properties, size);
+//     }
+//     cout << "프로그램 종료 \n";
+//     cin.get();
+//     cin.get();
+//     return 0;
+// }
+// int fill_array(double ar[], int limit)
+// {
+//     using namespace std;
+//     double temp;
+//     int i;
+//     for ( i = 0; i < limit; i++)
+//     {
+//         cout << (i+1) << "번 부동산의 가격: $";
+//         cin >> temp;
+//         if(!cin)
+//         {
+//             cin.clear();
+//             while(cin.get() != '\n')
+//                 continue;
+//             cout << "입력 불량 입력과정을 끝내겠습니다. \n";
+//             break;
+//         }
+//         else if(temp<0)
+//             break;
+//         ar[i] = temp;
+//     }
+//     return i;
+// }
+// void show_array(const double ar[], int n)
+// {
+//     using namespace std;
+//     for (int i = 0; i < n; i++)
+//     {
+//         cout << (i+1) << "번 부동산: $";
+//         cout << ar[i] << endl;
+//     }
+    
+// }
+// void revalue(double r, double ar[], int n)
+// {
+//     for (int i = 0; i < n; i++)
+//     {
+//         ar[i] *=r;
+//     }
+    
+// }
+//배열 범위를 사용하는 함수
+// #include <iostream>
+// const int ArSize = 8;
+// int sum_arr(const int *begin, const int *end);
+// int main()
+// {
+//     using namespace std;
+//     int cookies[ArSize] = {1,2,4,8,16,32,64,128};
+//     int sum = sum_arr(cookies,cookies+ArSize);
+//     cout << "먹은 과자 수 합계: " << sum << endl;
+//     sum = sum_arr(cookies, cookies+3);
+//     cout << "처음 세 사람은 과자 " << sum << "개를 먹었습니다. \n" ;
+//     sum = sum_arr(cookies + 4, cookies + 8);
+//     cout << "마지막 네 사람은 과자 " << sum << "개를 먹었습니다. \n";
+//     return 0;
+// }
+// int sum_arr(const int *begin, const int* end)
+// {
+//     const int * pt;
+//     int total = 0;
+//     for (pt = begin; pt != end; pt++)
+//     {
+//         total = total +*pt;
+//     }
+//     return total;
+// }
+//const float g_earth = 9.80;
+//const float *pe = &g_earth; // 사용가능
+//g_earth나 pe로 값 변경 가능
+// const float g_moon = 1.63;
+// float *pm = &g_moon; // 사용할 수 없음
+//pm으로 값 변경 가능하면 const가 왜 달린겨
+//int sloth = 3
+// int sloth2 = 4
+// const int *ps = &sloth // const int를 지시하는 포인터
+// int * const finger = &sloth // int를 지시하는 const 포인터
+// ps로 sloth의 값을 변경하는 것은 불가능하지만
+// 다른 변수를 지시할 수 있다. ex) const int *ps = &sloth2
+// finger로 sloth의 값을 변경하는 것은 가능하지만
+// 지시하는 변수를 변경 할 수 없다.
+//2차원 배열
+// int data[3][4];
+// int total = sum(data,3) //함수 호출시 행 전달
+// #include <iostream>
+// unsigned int c_in_str(const char * str, char ch);
+// int main()
+// {
+//     using namespace std;
+//     char mmm[15] = "minimun";
+//     char *wail = "ululate";
+//     unsigned int ms = c_in_str(mmm, 'm');
+//     unsigned int us = c_in_str(wail,'u');
+//     cout <<mmm << "에는 m이 " <<ms << "개 들어 있습니다. \n";
+//     cout << wail << "에는 u가 " << us << "개 들어 있습니다. \n";
+//     return 0;
+// }
+// unsigned int c_in_str(const char * str, char ch)
+// {
+//     int count = 0;
+//     while(*str) // *str가 '\0'이면 루프 탈출
+//     {
+//         if(*str == ch)
+//             count++;
+//         str++;
+//     }
+//     return count;
+// }
+//char 형 지시하는 포인터 리턴하는 함수
+// #include <iostream>
+// char *buildstr(char c, int n);
+// int main()
+// {
+//     using namespace std;
+//     int times;
+//     char ch;
+//     cout <<"문자 하나 입력: ";
+//     cin >> ch;
+//     cout <<"정수 하나 입력: ";
+//     cin >> times;
+//     char *ps = buildstr(ch, times);
+//     cout << ps << endl;
+//     delete [] ps;
+//     ps = buildstr('+', 20);
+//     cout << ps << "-DONE-" << ps << endl;
+//     delete [] ps;
+//     return 0;
+// }
+// char *buildstr(char c, int n)
+// {
+//     char *pstr = new char[n+1]; // 동적할당
+//     pstr[n] = '\0'; // 끝에 널문자 삽입해서 문자열 종결
+//     while (n-- > 0)
+//         pstr[n] = c;
+//     return pstr;
+// }
+//함수와 구조체
+// #include <iostream>
+// struct travel_time
+// {
+//     int hours;
+//     int mins;
+// };
+// const int Mins_per_hr = 60;
+// travel_time sum(travel_time t1, travel_time t2);
+// void show_time(travel_time t);
+// int main()
+// {
+//     using namespace std;
+//     travel_time day1 = {5,45};
+//     travel_time day2 = {4,55};
+
+//     travel_time trip = sum(day1, day2);
+//     cout << "이틀간 소요시간: ";
+//     show_time(trip);
+
+//     travel_time day3 = {4, 32};
+//     cout << "사흘간 소요시간: ";
+//     show_time(sum(trip,day3));
+//     return 0;
+// }
+// travel_time sum(travel_time t1, travel_time t2)
+// {
+//     travel_time total;
+//     total.mins = (t1.mins + t2.mins) % Mins_per_hr;
+//     total.hours = t1.hours + t2.hours + (t1.mins + t2.mins) / Mins_per_hr;
+//     return total;
+// }
+// void show_time(travel_time t)
+// {
+//     using namespace std;
+//     cout << t.hours << "시간 "
+//          << t.mins << "분 \n";
+// }
+//구조체 매개변수를 사용하는 함수
+// #include <iostream>
+// #include <cmath>
+// struct polar
+// {
+//     double distance;
+//     double angle;
+// };
+// struct rect
+// {
+//     double x;
+//     double y;
+// };
+// polar rect_to_polar(rect xypos);
+// void show_polar(polar dapos);
+// int main()
+// {
+//     using namespace std;
+//     rect rplace;
+//     polar pplace;
+//     cout << "x값과 y값을 입력하십시오: ";
+//     while(cin >> rplace.x >> rplace.y)
+//     {
+//         pplace = rect_to_polar(rplace);
+//         show_polar(pplace);
+//         cout << "x값과 y값을 입력하십시오(끝내려면 q를 입력): ";
+//     }
+//     cout << "프로그램을 종료 \n";
+//     return 0;
+// }
+// polar rect_to_polar(rect xypos)
+// {
+//     using namespace std;
+//     polar answer;
+
+//     answer.distance = 
+//         sqrt(xypos.x * xypos.x + xypos.y * xypos.y); //34
+//     answer.angle = atan2(xypos.y, xypos.x); // 5,3
+//     return answer;
+// }
+// void show_polar(polar dapos)
+// {
+//     using namespace std;
+//     const double Rad_to_deg = 57.29577951;
+//     cout << "거리 = " <<dapos.distance;
+//     cout << ", 각도 = " << dapos.angle * Rad_to_deg;
+//     cout << "도 \n";
+// }
+// #include <iostream>
+// #include <cmath>
+// struct polar
+// {
+//     double distance;
+//     double angle;
+// };
+// struct rect
+// {
+//     double x;
+//     double y;
+// };
+// void rect_to_polar(const rect* pxy, polar *pda);
+// void show_polar(const polar *pda);
+// int main()
+// {
+//     using namespace std;
+//     rect rplace;
+//     polar pplace;
+//     cout << "x값과 y값을 입력하십시오: ";
+//     while(cin >> rplace.x >> rplace.y)
+//     {
+//         rect_to_polar(&rplace,&pplace);
+//         show_polar(&pplace);
+//         cout << "x값과 y값을 입력하십시오(끝내려면 q를 입력): ";
+//     }
+//     cout << "프로그램을 종료 \n";
+//     return 0;
+// }
+// void show_polar(const polar *pda)
+// {
+//     using namespace std;
+//     const double Rad_to_deg = 57.29577951;
+//     cout << "거리 = " << pda -> distance;
+//     cout << ", 각도 = " << pda ->angle * Rad_to_deg;
+//     cout << "도\n";
+// }
+// void rect_to_polar(const rect *pxy, polar *pda)
+// {
+//     using namespace std;
+//     pda -> distance = 
+//         sqrt(pxy -> x* pxy->x + pxy->y * pxy-> y);
+//     pda -> angle = atan2(pxy->y,pxy->x);
+// }
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// const int SIZE = 5;
+// void display(const string sa[], int n);
+// int main()
+// {
+//     string list[SIZE];
+//     cout << "좋아하는 밤하늘의 광경을 " << SIZE << "개 입력하시요:\n";
+//     for (int i = 0; i < SIZE; i++)
+//     {
+//         cout << i+1 << ": ";
+//         getline(cin,list[i]);
+//     }
+//     cout << "입력하신 내용은 다음과 같습니다: \n";
+//     display(list,SIZE);
+//     return 0;
+// }
+// void display(const string sa[], int n)
+// {
+//     for (int i = 0; i < n; i++)
+//     {
+//         cout << i+1 << ": " << sa[i] << endl;
+//     } 
+// }
+//array 객체에 대한 기능
+// #include <iostream>
+// #include <array>
+// #include <string>
+// const int Seasons = 4;
+// const std::array<std::string, Seasons> Sname =
+//     {"Spring","Summer","Fall","Winter"};
+// void fill(std::array<double,Seasons> *pa); //array 객체를 수정하는 기능
+// void show(std::array<double, Seasons> da); // 수정하지 않고 객체를 사용하는 기능
+// int main()
+// {
+//     std::array<double, Seasons> expenses;
+//     fill(&expenses);
+//     show(expenses);
+//     return 0;
+// }
+// void fill(std::array<double, Seasons> *pa)
+// {
+//     using namespace std;
+//     for (int i = 0; i < Seasons; i++)
+//     {
+//         cout << Sname[i] << "에 소요되는 비용: ";
+//         cin >> (*pa) [i];
+//     }
+// }
+// void show(std::array<double, Seasons> da)
+// {
+//     using namespace std;
+//     double total = 0.0;
+//     cout << "\n계절별 비용S\n";
+//     for (int i = 0; i < Seasons; i++)
+//     {
+//         cout << Sname[i] << " : $" << da[i] << endl;
+//         total += da[i];
+//     }
+//     cout << "총비용 :$" << total << endl;
+    
+// }
+//재귀함수
+// #include <iostream>
+// void countdown(int n);
+// int main()
+// {
+//     countdown(4);
+//     return 0;
+// }
+// void countdown(int n)
+// {
+//     using namespace std;
+//     cout << "카운트다운....." << n << endl;
+//     if (n>0)
+//     {
+//         countdown(n-1);
+//     }
+//     cout << n << ": Kaboom\n";
+// }
+// #include <iostream>
+// const int Len = 66;
+// const int Divs = 6;
+// void subdivide(char ar[], int low, int high, int level);
+// int main()
+// {
+//     char ruler[Len];
+//     int i;
+//     for ( i = 0; i < Len - 2; i++)
+//     {
+//         ruler[i] =' ';
+//     }
+//     ruler[Len-1] = '\0';
+//     int max = Len -2;
+//     int min = 0;
+//     ruler[min] = ruler[max] = '|';
+//     std::cout << ruler << std::endl;
+//     for ( i = 0; i < Divs; i++)
+//     {
+//         subdivide(ruler, min, max, i);
+//         std::cout << ruler << std::endl;
+//         for (int j = 1; j < Len-2; j++)
+//         {
+//             ruler[j] = ' ';
+//         }
+//     }
+//     return 0;
+// }
+// void subdivide(char ar[], int low, int high, int level)
+// {
+//     if (level == 0)
+//         return;
+//     int mid = (high + low) / 2;
+//     ar[mid] = '|';
+//     subdivide(ar,low,mid,level-1);
+//     subdivide(ar,mid,high,level-1);
+// }
+// //cctype 라이브러리
+// #include <iostream>
+// #include <cctype> // 문자관련 함수 원형
+// int main()
+// {
+//     using namespace std;
+//     cout << "분석할 텍스트 입력 ""입력의 끝을형 @로 표시하세요\n";
+//     char ch;
+//     int whitespace = 0;
+//     int digits = 0;
+//     int chars = 0;
+//     int punct = 0;
+//     int others = 0;
+//     cin.get(ch);
+//     while (ch !='@')
+//     {
+//         if (isalpha(ch))
+//             chars++;
+//         else if(isspace(ch))
+//             whitespace++;
+//         else if(isdigit(ch))
+//             digits++;
+//         else if(ispunct(ch))
+//             punct++;
+//         else
+//             others++;
+//         cin.get(ch);
+//     }
+//     cout << "알파벳 " << chars << ", "
+//          << "화이트스페이스 " << whitespace << ", "
+//          << "숫자 " << digits << ", "
+//          << "구두점 " << punct << ", "
+//          << "기타 " << others << endl;
+//     return 0;
+// }
+//삼항연산자
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int a, b;
+//     cout << "두개의 정수 입력: ";
+//     cin >> a >> b;
+//     cout << "더 큰 정수는 ";
+//     int c = a>b ? a:b; // a> b 이면 c = a 아니면 c = b
+//     cout << c << "입니다.\n";
+//     return 0;
+// }
+//switch
+// #include <iostream>
+// using namespace std;
+// void showmenu();
+// void report();
+// void comfort();
+// int main()
+// {
+//     showmenu();
+//     int choice;
+//     cin >> choice;
+//     while (choice !=5)
+//     {
+//         switch (choice)
+//         {
+//             case 1:     cout << "\a\n";
+//                                 break;
+//             case 2:     report();
+//                                 break;
+//             case 3:     cout << "사장님은 오늘 회사에 계셨습니다.\n";
+//                                 break;
+//             case 4:     comfort();
+//                                 break;
+//             default :   cout << "그것은 선택할 수 없습니다.\n";
+//         }                       
+//         showmenu();
+//         cin >> choice;
+//     }
+//     cout << "프로그램을 종료\n";
+//     return 0;
+// }
+// void showmenu()
+// {
+//     cout << "1,2,3,4,5번중에서 하나를 선택:\n"
+//             "1)경고음           2)보고서\n"
+//             "3)알리바이         4)격려사\n"
+//             "5)종료\n";
+// }
+// void report()
+// {
+//     cout << "이번 분기는 경영 실적이 아주 좋습니다.\n"
+//             "판매량은 120% 늘었고 비용은 35% 줄었습니다.\n";
+// }
+// void comfort()
+// {
+//     cout << "사원들은 당신을 업계 최고의 CEO라고 생각하고 있습니다.\n"
+//             "이 사회도 당신을 업계 최고의 CEO라고 생각하고 있습니다\n";
+// }
+//열거체 스위치
+// #include <iostream>
+// enum{red, orange, yellow, green, blue, violet, indigo};
+// int main()
+// {
+//     using namespace std;
+//     cout << "컬러 코드 (0,1,2,3,4,5,6) 입력: ";
+//     int code;
+//     cin >> code;
+//     while (code >= red && code <= indigo)
+//     {
+//         switch(code)
+//         {
+//             case red : cout << "입술은 붉었습니다. \n"; break;
+//             case orange: cout << "머리카락은 귤색\n"; break;
+//             case yellow: cout << "신발은 노랑\n"; break;
+//             case green : cout << "손톱은 초록\n"; break;
+//             case blue : cout << "스웨터는 파랑\n"; break;
+//             case violet : cout << "눈은 보라색\n"; break;
+//             case indigo : cout << "분위기는 쪽빛이었습니다.\n"; break;
+//         }
+//         cout << "컬러 코드 (0,1,2,3,4,5,6) 입력: ";
+//         cin >> code;
+//     }
+//     cout << "프로그램 종료\n";
+//     return 0;
+// }
+//입력으로 루프 종료
+// #include <iostream>
+// const int Max = 5;
+// int main()
+// {
+//     using namespace std;
+//     double fish[Max];
+//     cout << "오늘 낚은 물고기의 무게 입력\n";
+//     cout << "물고기는 최대 " << Max <<"마리까지 낚을 수 있습니다.\n"
+//          << "<입력을 끝내려면 q 입력>\n";
+//     cout << "fish #1: ";
+//     int i = 0;
+//     while(i<Max && cin >> fish[i])
+//     {
+//         if(++i<Max)
+//             cout << "fish #" << i+1 << ": ";
+//     }
+//     double total = 0.0;
+//     for (int j = 0; j < i; j++)
+//     {
+//         total += fish[j];
+//     }
+//     if(i==0)
+//         cout << "물고기를 한 마리도 못 낚았군요\n";
+//     else
+//         cout << "물고기 " << i << "마리의 평균 무게는 "
+//              << total/i << "그램입니다.\n";
+//     cout << "프로그램 종료\n";
+//     return 0;
+    
+// }
+// #include <iostream>
+// const int Max = 5;
+// int main()
+// {
+//     using namespace std;
+//     int golf[Max];
+//     cout << "골프 점수 입력\n";
+//     cout << "총" << Max << " 라운드 점수를 입력해야 합니다.\n";
+//     int i;
+//     for ( i = 0; i < Max; i++)
+//     {
+//         cout << "round #" << i+i << ": ";
+//         while(!(cin >> golf[i]))
+//         {
+//             cin.clear();
+//             while(cin.get() != '\n')
+//                 continue;
+//             cout << "골프 점수 입력: ";
+//         }
+//     }
+//     double total = 0.0;
+//     for(i=0 ; i<Max ; i++)
+//         total += golf[i];
+//     cout << "총 " << Max << "라운드의 평균 점수 = "
+//          << total/Max << endl;
+//     return 0;
+// }
+// #include <iostream>
+// #include <fstream> //파일 I/O 용
+// int main()
+// {
+//     using namespace std;
+//     char automobile[50];
+//     int year;
+//     double a_price;
+//     double d_price;
+
+//     ofstream outFile; // 출력을 위한 객체 생성
+//     outFile.open("carinfo.txt"); // 파일에 연결
+
+//     cout << "자동차 메이커와 차종 입력: ";
+//     cin.getline(automobile, 50);
+//     cout << "연식 입력: ";
+//     cin >> year;
+//     cout << "구입 가격 입력: ";
+//     cin >> a_price;
+//     d_price = 0.913 * a_price;
+//     cout << fixed;
+//     cout.precision(2);
+//     cout.setf(ios_base::showpoint);
+//     cout << "메이커와 차종: " << automobile << endl;
+//     cout << "연식: " << year << endl;
+//     cout << "구입 가격$" << a_price << endl;
+//     cout << "현재 가격$" << d_price << endl;
+
+//     //cout 대신 outFile을 사용해도 똑같음
+//     outFile << fixed;
+//     outFile.precision(2);
+//     outFile.setf(ios_base::showpoint);
+//     outFile << "메이커와 차종: " << automobile << endl;
+//     outFile <<"연식: " << year << endl;
+//     outFile << "구입가격$" << a_price << endl;
+//     outFile << "현재가격$" << d_price << endl;
+//     outFile.close(); //파일처리 종료
+//     return 0;
+// }
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+const int SIZE = 60;
+int main()
+{
+    using namespace std;
+    char filename[SIZE];
+    ifstream inFile;
+    cout << "데이터 파일의 이름 입력: ";
+    cin.getline(filename, SIZE);
+    inFile.open(filename);
+    if(!inFile.is_open())
+    {
+        cout << filename << "파일을 열 수 없습니다. " << endl;
+        cout << "프로그램 종료\n";
+        exit(EXIT_FAILURE);
+    }
+    double value;
+    double sum = 0.0;
+    int count =0;
+    inFile >> value;
+    while (inFile.good())
+    {
+        ++count;
+        sum += value;
+        inFile >> value;
+    }
+    if (inFile.eof())
+        cout << "파일 끝 도달\n";
+    else if(inFile.fail())
+        cout << "데이터 불일치 입력 종료\n";
+    else 
+        cout << "알 수 없는 이유로 입력 종료\n";
+    if(count == 0)
+        cout << "데이터가 없습니다.\n";
+    else
+    {
+        cout << "읽은 항목의 개수: " << count << endl;
+        cout << "합계: " << sum << endl;
+        cout << "평균: " << sum/count << endl;
+    }
+    inFile.close();
+    return 0;
+}
