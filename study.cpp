@@ -1165,7 +1165,7 @@
 //     cin >> num2;
 //     int result = 0;
 //     while(num1<=num2)
-//     {
+//     {장
 //         result += num1;
 //         num1++;
 //     }
@@ -1213,6 +1213,34 @@
 // {
 
 // }
+//매개변수 2개 사용하는 함수
+// #include <iostream>
+// using namespace std;
+// void n_chars(char,int);
+// int main()
+// {
+//     int times;
+//     char ch;
+//     cout << "문자 하나 입력: ";
+//     cin >> ch;
+//     while(ch != 'q') 
+//     {
+//         cout << "정수 하나 입력: ";
+//         cin >> times;
+//         n_chars(ch, times);
+//         cout << "\n계속하려면 다른 문자 입력"
+//                 "끝내려면 q를 눌러주세요: ";
+//         cin >> ch;
+//     }
+//     cout << "현재 times의 값은" << times << "입니다.\n";
+//     cout << "프로그램 종료\n";
+//     return 0;
+// }
+// void n_chars(char c, int n) // c n번 출력
+// {
+//     while (n-- > 0) //n 0될때까지
+//         cout << c;
+// }
 //승률 구하기
 // #include <iostream>
 // long double probability(unsigned numbers, unsigned picks);
@@ -1240,7 +1268,7 @@
 //         result = result *n/p;
 //     return result;
 // }
-//배열 매개변수를 사용하는 함수
+// 배열 매개변수를 사용하는 함수
 // #include <iostream>
 // const int ArSize = 8;
 // int sum_arr(int arr[], int n);
@@ -1288,7 +1316,7 @@
 //     }
 //     return total;
 // }
-//부동산예제
+// 부동산예제
 // #include <iostream>
 // const int Max = 5;
 // int fill_array(double ar[], int limit);
@@ -1428,7 +1456,7 @@
 //     }
 //     return count;
 // }
-//char 형 지시하는 포인터 리턴하는 함수
+// char 형 지시하는 포인터 리턴하는 함수
 // #include <iostream>
 // char *buildstr(char c, int n);
 // int main()
@@ -1542,6 +1570,7 @@
 //     cout << ", 각도 = " << dapos.angle * Rad_to_deg;
 //     cout << "도 \n";
 // }
+// 구조체 매개변수를 지시하는 포인터를 사용하는 함수
 // #include <iostream>
 // #include <cmath>
 // struct polar
@@ -1552,7 +1581,7 @@
 // struct rect
 // {
 //     double x;
-//     double y;
+//     double y;수
 // };
 // void rect_to_polar(const rect* pxy, polar *pda);
 // void show_polar(const polar *pda);
@@ -1586,6 +1615,7 @@
 //         sqrt(pxy -> x* pxy->x + pxy->y * pxy-> y);
 //     pda -> angle = atan2(pxy->y,pxy->x);
 // }
+// string 객체의 배열 처리
 // #include <iostream>
 // #include <string>
 // using namespace std;
@@ -1611,7 +1641,7 @@
 //         cout << i+1 << ": " << sa[i] << endl;
 //     } 
 // }
-//array 객체에 대한 기능
+// array 객체에 대한 기능
 // #include <iostream>
 // #include <array>
 // #include <string>
@@ -1667,6 +1697,7 @@
 //     }
 //     cout << n << ": Kaboom\n";
 // }
+
 // #include <iostream>
 // const int Len = 66;
 // const int Divs = 6;
@@ -1684,7 +1715,7 @@
 //     int min = 0;
 //     ruler[min] = ruler[max] = '|';
 //     std::cout << ruler << std::endl;
-//     for ( i = 0; i < Divs; i++)
+//     for ( i = 1; i <= Divs; i++)
 //     {
 //         subdivide(ruler, min, max, i);
 //         std::cout << ruler << std::endl;
@@ -1703,6 +1734,37 @@
 //     ar[mid] = '|';
 //     subdivide(ar,low,mid,level-1);
 //     subdivide(ar,mid,high,level-1);
+// }
+//함수를 지시하는 포인터
+// #include <iostream>
+// double gildong(int);
+// double moonsoo(int);
+// void estimate(int lines, double (*pf)(int));
+// int main()
+// {
+//     using namespace std;
+//     int code;
+//     cout << "필요한 코드의 행 수를 입력: ";
+//     cin >> code;
+//     cout << "홍길동의 시간 예상:\n";
+//     estimate(code, gildong);
+//     cout << "박문수의 시간 예상:\n";
+//     estimate(code, moonsoo);
+//     return 0;
+// }
+// double gildong(int lns)
+// {
+//     return 0.05 *lns;
+// }
+// double moonsoo(int lns)
+// {
+//     return 0.03 * lns + 0.0004 * lns *lns;
+// }
+// void estimate(int lines, double (*pf)(int))
+// {
+//     using namespace std;
+//     cout << lines << "행을 작성하는데 ";
+//     cout << (*pf)(lines) << "시간이 걸립니다\n";
 // }
 // //cctype 라이브러리
 // #include <iostream>
@@ -1924,48 +1986,265 @@
 //     outFile.close(); //파일처리 종료
 //     return 0;
 // }
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-const int SIZE = 60;
-int main()
-{
-    using namespace std;
-    char filename[SIZE];
-    ifstream inFile;
-    cout << "데이터 파일의 이름 입력: ";
-    cin.getline(filename, SIZE);
-    inFile.open(filename);
-    if(!inFile.is_open())
-    {
-        cout << filename << "파일을 열 수 없습니다. " << endl;
-        cout << "프로그램 종료\n";
-        exit(EXIT_FAILURE);
-    }
-    double value;
-    double sum = 0.0;
-    int count =0;
-    inFile >> value;
-    while (inFile.good())
-    {
-        ++count;
-        sum += value;
-        inFile >> value;
-    }
-    if (inFile.eof())
-        cout << "파일 끝 도달\n";
-    else if(inFile.fail())
-        cout << "데이터 불일치 입력 종료\n";
-    else 
-        cout << "알 수 없는 이유로 입력 종료\n";
-    if(count == 0)
-        cout << "데이터가 없습니다.\n";
-    else
-    {
-        cout << "읽은 항목의 개수: " << count << endl;
-        cout << "합계: " << sum << endl;
-        cout << "평균: " << sum/count << endl;
-    }
-    inFile.close();
-    return 0;
-}
+// #include <iostream>
+// #include <fstream>  //파일 I/O 지원
+// #include <cstdlib> // exit 지원
+// const int SIZE = 60;
+// int main()
+// {
+//     using namespace std;
+//     char filename[SIZE];
+//     ifstream inFile; // 파일 입력을 처리하기 위한 객체
+//     cout << "데이터 파일의 이름 입력: ";
+//     cin.getline(filename, SIZE);
+//     inFile.open(filename); // inFile을 파일에 연결
+//     if(!inFile.is_open()) // 파일 오픈 실패시
+//     {
+//         cout << filename << "파일을 열 수 없습니다. " << endl;
+//         cout << "프로그램 종료\n";
+//         exit(EXIT_FAILURE);
+//     }
+//     double value;
+//     double sum = 0.0;
+//     int count =0; // 읽은 항목 개수
+
+//     inFile >> value; // 첫번째 값을 얻는다
+//     while (inFile.good()) // 입력 양호 EOF 아닌동안
+//     {
+//         ++count; // 항목개수 추가
+//         sum += value; // 값 저장
+//         inFile >> value; // 다음값
+//     }
+//     if (inFile.eof())
+//         cout << "파일 끝 도달\n";
+//     else if(inFile.fail())
+//         cout << "데이터 불일치 입력 종료\n";
+//     else 
+//         cout << "알 수 없는 이유로 입력 종료\n";
+//     if(count == 0)
+//         cout << "데이터가 없습니다.\n";
+//     else
+//     {
+//         cout << "읽은 항목의 개수: " << count << endl;
+//         cout << "합계: " << sum << endl;
+//         cout << "평균: " << sum/count << endl;
+//     }
+//     inFile.close(); //종료
+//     return 0;
+// }
+//유튜브보다
+// #include <iostream>
+// void swap(int &a, int &b);
+// int main()
+// {
+//     using namespace std;
+//     int x=10, y=20;
+//     cout << x << " " << y << endl;
+//     swap(x,y);
+//     cout << x << " " << y << endl;
+//     return 0;
+// }
+// void swap(int &a, int &b)
+// {
+//     int temp = a;
+//     a = b;
+//     b = temp;
+// }
+//inline 예제
+// #include <iostream>
+// inline double square(double x) { return x *x;}
+
+// int main()
+// {
+//     using namespace std;
+//     double a,b;
+//     double c = 13.0;
+//     a = square(5.0);
+//     b = square(4.5+7.5);
+//     cout << "a = " << a << ", b = " << b << endl;
+//     cout << "c = " << c;
+//     cout << ", c의 제곱 = " << square(c++) << endl;
+//     cout << "현재 c = " << c << endl;
+//     return 0;
+// }
+//참조 변수의 정의와 사용
+//참조 선언할 때 참조 변수를 함께 초기화 해야 함
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int rats = 101;
+//     int &rodents = rats; // 참조변수 선언
+
+//     cout << "rats = " << rats;
+//     cout << ", rodents = " << rodents << endl;
+//     rodents++;
+//     cout << "rats = " << rats;
+//     cout << ", rodents = " << rodents << endl;
+
+//     cout << "rats의 주소 = " << &rats;
+//     cout << ", rodents의 주소 = " << &rodents << endl;
+//     return 0;
+// }
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int rats = 101; 
+//     int &rodents = rats; // 101을 가르키는 또다른 변수이름 참조변수
+// rats 참조해서 rodents도 101 가르킴
+
+//     cout << "rats = " << rats;
+//     cout << ", rodents = " << rodents << endl;
+//     cout << "rats의 주소 = " << &rats;
+//     cout << ", rodents의 주소 = " << &rodents << endl;
+
+//     int bunnies = 50;
+//     rodents = bunnies;
+//     cout << "bunnies = " << bunnies;
+//     cout << ", rats = " << rats;
+//     cout << ", rodents = " << rodents << endl;
+//     cout << "bunnies의 주소 = " << &bunnies;
+//     cout << ", rodents의 주소 = " << &rodents << endl;
+//     return 0;
+// }
+
+//참조를 이용한 교환과 포인터를 이용한 교환
+// #include <iostream>
+// void swapr(int &a, int &b);
+// void swapp(int *p, int *q);
+// void swapv(int a, int b);
+// int main()
+// {
+//     using namespace std;
+//     int wallet1 = 3000;
+//     int wallet2 = 3500;
+//     cout << "지갑 1 = " << wallet1 << "원";
+//     cout << ", 지갑2 = " << wallet2 << "원\n";
+
+//     cout << "참조를 이용하여 내용들을 교환:\n";
+//     swapr(wallet1,wallet2);
+//     cout << "지갑1 = " << wallet1 << "원";
+//     cout << ", 지갑2 = " << wallet2 << "원\n";
+
+//     cout << "포인터를 이용하여 내용들을 다시 교환:\n";
+//     swapp(&wallet1, &wallet2);
+//     cout << "지갑1 = " << wallet1 << "원";
+//     cout << ", 지갑2 = " << wallet2 << "원\n";
+
+//     cout << "값으로 전달하여 내용 교환 시도:\n";
+//     swapv(wallet1, wallet2);
+//     cout << "지갑1 = " << wallet1 << "원";
+//     cout << ", 지갑2 = " << wallet2 << "원\n";
+//     return 0;
+// }
+// void swapr(int &a, int &b)
+// {
+//     int temp;
+//     temp = a;
+//     a = b;
+//     b = temp;
+// }
+// void swapp(int *p, int *q)
+// {
+//     int temp;
+//     temp = *p;
+//     *p = *q;
+//     *q = temp;
+// }
+// void swapv(int a, int b)
+// {
+//     int temp;
+//     temp = a;
+//     a = b;
+//     b = temp;
+// }
+// 일반 매개변수와 참조 매개변수
+// #include <iostream>
+// double cube(double a);
+// double refcube(double &ra);
+// int main()
+// {
+//     using namespace std;
+//     double x = 3.0;
+
+//     cout << cube(x);
+//     cout << " = " << x << "의 세제곱\n";
+//     cout << refcube(x);
+//     cout << " = " << x << "의 세제곱\n";
+//     return 0;
+// }
+// double cube(double a)
+// {
+//     a *= a*a;
+//     return a;
+// }
+// double refcube(double &ra) // 참조전달이라 원본에 영향감
+// {
+//     ra *= ra * ra;
+//     return ra;
+// }
+// #include <iostream>
+// #include <string>
+// struct free_throws
+// {
+//     std::string name;
+//     int made;
+//     int attempts;
+//     float percent;
+// };
+// void display(const free_throws &ft);
+// void set_pc(free_throws &ft);
+// free_throws & accumulate(free_throws & target, const free_throws &source);
+// int main()
+// {
+//     free_throws one = {"Ifelsa Branch", 13, 14};
+//     free_throws two = {"Andor Knott", 10, 16};
+//     free_throws three = {"Minnie Max", 7, 9};
+//     free_throws four = {"Whily Looper", 5, 9};
+//     free_throws five = {"Long Long",6,14};
+//     free_throws team = {"Throwgoods", 0, 0};
+
+//     free_throws dup;
+//     set_pc(one);
+//     display(one);
+//     accumulate(team,one);
+//     display(team);
+//     display(accumulate(team,two));
+//     accumulate(accumulate(team,three),four);
+//     display(team);
+
+//     dup = accumulate(team,five);
+//     std::cout << "team 출력:\n";
+//     display(team);
+//     std::cout << "대입 이후 dup 출력:\n";
+//     display(dup);
+//     set_pc(four);
+
+//     accumulate(dup,five) = four;
+//     std::cout << "문제 소지가 있는 대입 이후 dup 출력:\n";
+//     display(dup);
+//     return 0;
+// }
+// void display(const free_throws &ft)
+// {
+//     using std::cout;
+//     cout << "Name: " << ft.name << '\n';
+//     cout << "Made: " << ft.made << '\t';
+//     cout << "Attempts: " << ft.attempts << '\t';
+//     cout << "Percent: " << ft.percent <<'\n';
+// }
+// void set_pc(free_throws &ft)
+// {
+//     if(ft.attempts !=0)
+//         ft.percent = 100.0f *float(ft.made)/float(ft.attempts);
+//     else
+//         ft.percent = 0;
+// }
+// free_throws & accumulate(free_throws & target, const free_throws &source)
+// {
+//     target.attempts += source.attempts;
+//     target.made += source.made;
+//     set_pc(target);
+//     return target;
+// }
