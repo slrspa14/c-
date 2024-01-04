@@ -1738,7 +1738,7 @@
 //함수를 지시하는 포인터
 // #include <iostream>
 // double gildong(int);
-// double moonsoo(int);
+// double moonsoo(int); // 두번째 매개변수는 int형을 매개변수로 취하는 double형 함수를 지시하는 포인터
 // void estimate(int lines, double (*pf)(int));
 // int main()
 // {
@@ -1750,7 +1750,7 @@
 //     estimate(code, gildong);
 //     cout << "박문수의 시간 예상:\n";
 //     estimate(code, moonsoo);
-//     return 0;
+//     return 0; //흠
 // }
 // double gildong(int lns)
 // {
@@ -1766,6 +1766,52 @@
 //     cout << lines << "행을 작성하는데 ";
 //     cout << (*pf)(lines) << "시간이 걸립니다\n";
 // }
+// #include <iostream>
+// const double *f1(const double ar[], int n);
+// const double *f2(const double [], int);
+//const double *f3(const double *, int);
+// int main()
+// {
+//     using namespace std;
+//     double av[3] = {1112.3, 1542.6, 2227.9};
+//     const double *(*p1)(const double *, int ) = f1;
+//     auto p2 = f2; // c++ 자동 형변환
+
+//     cout << "함수 포인터:\n";
+//     cout << "주소 값\n";
+//     cout << (*p1)(av,3) << ": " << *(*p1)(av,3) << endl;
+//     cout << p2(av,3) << ": " << *p2(av,3) << endl;
+
+//     const double *(*pa[3])(const double *, int) = {f1,f2,f3};
+//     auto pb = pa;
+//     cout << "\n함수 포인터를 원소로 가지는 배열:\n";
+//     cout << "주소 값\n";
+//     for(int i= 0 ; i<3 ; i++)
+//         cout << pb[i](av,3) << ": " << *pb[i](av,3) << endl;
+
+//     cout << "\n포인터를 원소로 가지는 배열을 가리키는 포인터:\n";
+//     cout << "주소 값\n";
+//     auto pc = &pa;
+//     cout << (*pc) [0](av,3) <<": " << *(*pc)[0](av,3) << endl;
+//     const double *(*(*pd)[3])(const double *, int) = &pa;
+//     const double *pdb = (*pd)[1](av,3);
+//     cout << pdb << ": " <<*pdb << endl;
+//     //cout << (*(*pd)[2])(av,3) << ": " << *(*(pd)[2])(av,3) << endl;
+//     return 0;
+// }
+// const double *f1(const double ar[], int n)
+// {
+//     return ar;
+// }
+// const double *f2(const double ar[], int n)
+// {
+//     return ar+1;
+// }
+// const double *f3(const double ar[], int n)
+// {
+//     return ar+2;
+// }
+
 // //cctype 라이브러리
 // #include <iostream>
 // #include <cctype> // 문자관련 함수 원형
@@ -2184,6 +2230,7 @@
 //     ra *= ra * ra;
 //     return ra;
 // }
+//8장
 // #include <iostream>
 // #include <string>
 // struct free_throws
@@ -2247,4 +2294,284 @@
 //     target.made += source.made;
 //     set_pc(target);
 //     return target;
+// }
+//클래스 객체와 참조
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// string version1(const string &s1, const string &s2);
+// const string & version2(string &s1, const string & s2);
+// const string & version3(string &s1, const string & s2);
+// int main()
+// {
+//     string input;
+//     string copy;
+//     string result;
+
+//     cout << "문자열 입력: ";
+//     getline(cin,input);
+//     copy = input;
+//     cout << "입력한 문자열: " << input << endl;
+//     result = version1(input, "***");
+//     cout << "바뀐 문자열: " << result << endl;
+//     cout << "원래 문자열: " << input << endl;
+
+//     result = version2(input, "###");
+//     cout << "바뀐 문자열: " << result << endl;
+//     cout << "원래 문자열: " << input << endl;
+
+//     cout << "원래 문자열 재설정\n";
+//     input = copy;
+//     result = version3(input, "@@@");
+//     cout << "바뀐 문자열: " << result << endl;
+//     cout << "원래 문자열: " << input << endl;
+//     return 0;
+// }
+// string version1(const string & s1, const string & s2)
+// {
+//     string temp;
+//     temp = s2+s1+s2;
+//     return temp;
+// }
+// const string &version2(string &s1, const string &s2)
+// {
+//     s1 = s2+s1+s2; // 함수에 전달된 참조를 리턴하므로 안전전
+//     return s1;
+// }
+// const string & version3(string & s1, const string &s2)
+// {
+//     string temp;
+//     temp = s2+s1+s2; // 지역변수에 대한 참조를 리턴하므로 안전하지 않다
+//     return temp;
+// }
+// #include <iostream>
+// #include <fstream>
+// #include <cstdlib>
+// using namespace std;
+// void file_it(ostream & os, double fo, const double fe[], int n);
+// const int LIMIT = 5;
+// int main()
+// {
+//     ofstream fout;
+//     const char *fn = "ep-data.txt";
+//     fout.open(fn);
+//     if (!fout.is_open())
+//     {
+//         cout << fn << "파일을 열 수 없습니다. 끝\n";
+//         exit(EXIT_FAILURE);
+//     }
+//     double objective;
+//     cout << "대물렌즈 초점거리를 "
+//             " mm 단위로 입력하십시오: ";
+//     cin >> objective;
+//     double eps[LIMIT];
+//     cout << LIMIT << "가지 대안렌즈의 초점거리를 "
+//                      "mm 단위로 입력:\n";
+//     for (int i = 0; i < LIMIT; i++)
+//     {
+//         cout << "대안렌즈 #" << i+1 << ": ";
+//         cin >> eps[i];
+//     }
+//     file_it(fout, objective, eps, LIMIT);
+//     file_it(cout, objective, eps, LIMIT);
+//     cout << "종료\n";
+//     return 0;
+// }
+// void file_it(ostream & os, double fo, const double fe[], int n)
+// {
+//     ios_base::fmtflags initial;
+//     initial = os.setf(ios_base::fixed);
+//     os.precision(0);
+//     os << "대물렌즈의 초점거리: " << fo << "mm\n";
+//     os.setf(ios::showpoint);
+//     os.precision(1);
+//     os.width(17);
+//     os << "대안렌즈 초점거리";
+//     os.width(15);
+//     os << "확대배율" << endl;
+//     for (int i = 0; i < n; i++)
+//     {
+//         os.width(17);
+//         os << fe[i];
+//         os.width(15);
+//         os << int (fo/fe[i] + 0.5) << endl;
+//     }
+//     os.setf(initial);
+// }
+
+// #include <iostream>
+// const int ArSize = 80;
+// char *left(const char * str, int n =1);
+// int main()
+// {
+//     using namespace std;
+//     char sample[ArSize];
+//     cout << "문자열을 입력:\n";
+//     cin.get(sample,ArSize);
+//     char *ps = left(sample,4);
+//     cout << ps << endl;
+//     delete[]ps;
+//     ps = left(sample);
+//     cout << ps << endl;
+//     delete[] ps;
+//     return 0;
+// }
+// char *left(const char *str, int n)
+// {
+//     if (n<0)
+//         n=0;
+//     char *p = new char[n+1];
+//     int i;
+//     for ( i = 0; i < n && str[i]; i++)
+//         p[i] = str[i];
+//     while(i<=n)
+//         p[i++] = '\0';
+//     return p;
+    
+// }
+//함수 오버로딩
+//서로 다른 여러 개의 함수가 하나의 이름을 공유하는 것
+// #include <iostream>
+// unsigned long left(unsigned long num, unsigned ct);
+// char *left(const char * str, int n =1);
+// int main()
+// {
+//     using namespace std;
+//     char *trip = "Hawaii";
+//     unsigned long n = 12345678;
+//     int i;
+//     char *temp;
+//     for ( i = 0; i < 10; i++)
+//     {
+//         cout << left(n,i) << endl;
+//         temp = left(trip,i);
+//         cout << temp << endl;
+//         delete[] temp; //재사용하려고 해제
+//     }
+//     return 0;
+// }
+// unsigned long left(unsigned long num, unsigned ct)
+// {
+//     unsigned digits = 1;
+//     unsigned long n = num;
+//     if (ct == 0 || num == 0)
+//         return 0; // 숫자 없으면 0 리턴
+//     while(n /=10)
+//         digits++;
+//     if (digits > ct)
+//     {
+//         ct = digits -ct;
+//         while(ct--)
+//             num /= 10;
+//         return num; // 남아있는 ct개 숫자 리턴
+//     }
+//     else // 'ct >= 전체 숫자 개수' 이면 그 정수 자체를 리턴 //?
+//         return num;
+// }
+// //str 문자열의 앞에서부터 n개의 문자를 취하여 새로운 문자열을 구성하고 그것을 지시하는 포인터를 리턴한다
+// char *left(const char * str, int n)
+// {
+//     if (n<0)
+//         n=0;
+//     char *p = new char[n+1];
+//     int i;
+//     for ( i = 0; i < n && str[i]; i++)
+//         p[i] = str[i]; // 문자들 복사
+//     while (i <=n)
+//         p[i++]= '\0'; // 나머지 널값
+//     return p;
+// }
+//같은 작업을 수행하는 함수들에만 사용하는 것이 좋다
+//서로 다른 데이터형의 매개변수를 요구하고
+// 디폴트 매개변수가 소용이 없을 때에는 함수 오버로딩 사용한다
+//템플릿
+// #include <iostream>
+// template <class Any>
+// void Swap(Any &a, Any &b);
+// int main()
+// {
+//     using namespace std;
+//     int i= 10;
+//     int j = 20;
+//     cout <<"i,j = " << i << ", " << j << ".\n";
+//     cout << "컴파일러가 생성한 int형 교환기 사용\n";
+//     Swap(i,j);// void Swap(int&,int&) 생성
+//     cout << "i,j = " << i << ", " << j << ".\n";
+
+//     double x = 24.5;
+//     double y =81.7;
+//     cout << "x,y = " << x << ", " << y << ".\n";
+//     cout << "컴파일러가 생성한 double형 교환기를 사용\n";
+//     Swap(x,y); // void Swap(double&,double&) 생성
+//     cout << "이제 x,y = " << x << ", " << y << ".\n";
+//     return 0;
+// }
+// template <class Any>
+// void Swap(Any &a, Any &b)
+// {
+//     Any temp; // temp는 Any형의 변수
+//     temp = a;
+//     a = b;
+//     b = temp;
+// }
+//템플릿 오버로딩
+// #include <iostream>
+// template <typename T>
+// void Swap(T &a, T &b);
+
+// template <typename T>
+// void Swap(T*a, T*b, int n);
+
+// void show(int a[]);
+// const int Lim = 8;
+// int main()
+// {
+//     using namespace std;
+//     int i =10, j = 20;
+//     cout << "i,j = " << i << ", " << j << ".\n";
+//     cout << "컴파일러가 생성한 int형 교환기 사용\n";
+//     Swap(i,j);
+//     cout << "i,j = " << i << ", " << j << ".\n";
+
+//     int d1[Lim] = {0,7,0,4,1,7,7,6};
+//     int d2[Lim] = {0,6,2,0,1,9,6,9};
+//     cout << "원본 배열:\n";
+//     show(d1);
+//     show(d2);
+//     Swap(d1,d2,Lim);
+//     cout << "교환된 배열:\n";
+//     show(d1);
+//     show(d2);
+//     return 0;
+// }
+// template <typename T>
+// void Swap(T &a, T &b)
+// {
+//     T temp;
+//     temp = a;
+//     a = b;
+//     b = temp;
+// }
+
+// template <typename T>
+// void Swap(T a[], T b[], int n)
+// {
+//     T temp;
+//     for (int i = 0; i < n; i++)
+//     {
+//         temp = a[i];
+//         a[i] = b[i];
+//         b[i] = temp;
+//     }
+// }
+// void show(int a[])
+// {
+//     using namespace std;
+//     cout<< a[0] << a[1] << "/";
+//     cout << a[2] << a[3] << "/";
+//     for (int i = 4; i < Lim; i++)
+//     {
+//         cout << a[i];
+//     }
+//     cout << endl;
 // }
