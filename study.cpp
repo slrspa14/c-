@@ -2575,3 +2575,70 @@
 //     }
 //     cout << endl;
 // }
+
+//240114 calss 상속 inheritance
+// #include <iostream>
+// class Animal{
+//     public:
+//     void sleep() const
+//     {
+//         std::cout << "I'm sleeping" << std::endl;
+//     }
+// };
+// class Human : public Animal
+// {
+//     public:
+//     void drivecar()const
+//     {
+//         std::cout << "I'm driving" << std::endl;
+//     }
+// };
+// int main(int argcm, char const *argv[])
+// {
+//     Human nocope;
+//     nocope.drivecar();
+//     nocope.sleep();
+//     return 0;
+// }
+// class a{
+//     public:
+//         int x;
+//     protected:
+//         int y;
+//     private:
+//         int z;
+// };
+// class B : public a
+// {
+//     /*x is public
+//     y is protected
+//     z is not accessible from B
+//     */
+// };
+// class C : protected a
+// {
+//     /*x is protected
+//     y is protected
+//     z is not accessible from C*/
+// };
+// class D : private a // class는 기본이 private
+// {
+//     /*x is private
+//     y is private
+//     z is not accessible from D*/
+// };
+//class B, C, D 모두 x,y,z 변수가 포함되어 있음 접근의 문제
+//상속시 베이스가 되는 함수의 constructor가 먼저 실행되고 destructor이 제일 마지막에 실행
+//상속해주는 class는 virtual 상속받는 class는 override
+#include <iostream>
+// int main()// 참조자
+// {
+//     int num = 10;
+//     int &hmm = num;
+//     std::cout << num << std::endl;
+//     std::cout << hmm << std::endl;
+//     hmm += 10;
+//     std::cout << num << std::endl;
+//     std::cout << hmm << std::endl;
+//     return 0;
+// }
